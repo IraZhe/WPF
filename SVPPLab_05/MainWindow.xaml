@@ -1,0 +1,77 @@
+﻿<Window x:Class="SVPPLab_05.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SVPPLab_05"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" FontSize="24">
+    <DockPanel LastChildFill="True">
+        <Menu Height="35" DockPanel.Dock="Top" Background="LightSteelBlue" FontSize="24">
+            <MenuItem Header="Shape" Click="MenuItemShape_Click" />
+            <MenuItem Header="File">
+                <MenuItem x:Name="menuItemSave" Header="Save" Command="Save"/>
+                <MenuItem x:Name="menuItemLoad" Header="Load" Command="Open"/>
+            </MenuItem>
+            <MenuItem x:Name="menuItemHelp" Header="Help" Command="Help"/>
+            <MenuItem Header="Close"/>
+        </Menu>
+        <StatusBar Height="35" Background="LightGreen" DockPanel.Dock="Bottom">
+            <TextBlock x:Name="textBlockCursorPosition"  Width="300"/>
+        </StatusBar>
+        <Canvas x:Name="canvas" Background="Beige" MouseDown="canvas_MouseDown" MouseMove="canvas_MouseMove">
+            <Rectangle x:Name="rectangle" Height="280" Width="500" Canvas.Left="240" Canvas.Top="50">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Color="BurlyWood" Offset="0"/>
+                        <GradientStop Color="Green" Offset="0.2"/>
+                        <GradientStop Color="IndianRed" Offset="0.4"/>
+                        <GradientStop Color="Magenta" Offset="0.7"/>
+                        <GradientStop Color="Blue" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.Triggers>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Fill.GradientStops[1].Color">
+                                <ColorAnimation To="Yellow" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Width" TargetName="rectangle">
+                                <DoubleAnimation From="300" To="100" Duration="0:0:2" AutoReverse="True"
+                                                 RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="Fill.GradientStops[3].Offset">
+                                <DoubleAnimation From="1" To="0" Duration="0:0:2" AutoReverse="True"
+                                                 RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="RadiusX" TargetName="rectangle">
+                                <DoubleAnimation From="0" To="100" Duration="0:0:2" AutoReverse="True"
+                                                 RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <Storyboard TargetProperty="RadiusY" TargetName="rectangle">
+                                <DoubleAnimation From="0" To="100" Duration="0:0:2" AutoReverse="True"
+                                                 RepeatBehavior="Forever"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Rectangle.Triggers>
+            </Rectangle>
+        </Canvas>
+    </DockPanel>
+</Window>
