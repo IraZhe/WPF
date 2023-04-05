@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <Button Height ="50" Margin="5,10" Click="ButtonView_Click">Просмотр</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonInsert_Click">Вставить</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonFind_Click">Найти</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonUpdate_Click">Обновить</Button>
+            <Button Height ="50" Margin="5,10" Click="ButtonDelete_Click">Удалить</Button>
+        </StackPanel>
+        <StackPanel x:Name="stackpanelPerson" Grid.Column="1" Background="Beige">
+            <StackPanel Orientation="Horizontal">
+                <Label Width="200" Margin="5,10">Имя</Label>
+                <TextBox x:Name="textBoxName" Width="200" Margin="5,10" Text="{Binding Path=Name}"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="200" Margin="5,10">Сумма</Label>
+                <TextBox x:Name="textBoxSum" Width="200" Margin="5,10" Text="{Binding Path=Sum}"></TextBox>
+            </StackPanel>
+            <ListBox x:Name="listBox" Height="400" Background="LightCyan" ItemsSource="{Binding}"></ListBox>
+        </StackPanel>
+
+    </Grid>
+</Window>
