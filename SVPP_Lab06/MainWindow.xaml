@@ -1,0 +1,32 @@
+﻿<Window x:Class="Lab006.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:thrd="clr-namespace:System.ComponentModel;assembly=System"
+        xmlns:local="clr-namespace:Lab006"
+        mc:Ignorable="d"
+                Title="Threads" Height="500" Width="800" FontFamily="Lucida Bright" FontSize="20">
+    <Window.Resources>
+        <thrd:BackgroundWorker x:Key="worker"
+              DoWork="BackgroundWorker_DoWork" 
+              ProgressChanged="BackgroundWorker_ProgressChanged"
+              RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted"
+              WorkerReportsProgress="True"/>
+    </Window.Resources>
+    <DockPanel Background="#d3c265">
+        <ProgressBar x:Name="pBar" Height="40" DockPanel.Dock="Bottom" />
+        <StackPanel>
+            <Label Content="Результат:"/>
+            <ListBox x:Name="listBox" Width="500" Height="350" FontSize="12" Grid.Row="1" Background="#e3d275"/>
+            <Label Content="Прогресс:" Grid.Row="2"/>
+        </StackPanel>
+        <StackPanel>
+            <Button x:Name="buttonParams" Background="#623821" Foreground="#d3c265" Content="Параметры" Margin="20" Click="buttonParams_Click"/>
+            <Button x:Name="buttonD" Background="#623821" Foreground="#d3c265" Content="Dispatcher" Margin="20" Click="ButtonD_Click"/>
+            <Button x:Name="buttonW" Background="#623821" Foreground="#d3c265" Content="BackgroundWorker" Margin="20" Click="ButtonW_Click"/>
+            <Button x:Name="buttonA" Background="#623821" Foreground="#d3c265" Content="async" Margin="20" Click="ButtonA_Click"/>
+        </StackPanel>
+    </DockPanel>
+
+</Window>
